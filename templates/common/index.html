@@ -1,0 +1,74 @@
+{% extends "common/base_generic.html" %}
+
+{% block title %}<title>Home - Foodmates</title>{% endblock %}
+
+{% block content %}
+
+    <header>
+        <div class="cover">
+            <div class="row text-center">
+
+
+                <div class="col-sm-12">
+                    <a href="{% url 'common:index' %}">
+                        {#                    <button type="button" class="btn btn-outline-dark btn-lg">TELL ME MORE</button>#}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="content">
+        <div class="jumbotron">
+            <div class="jumbotron shadow-sm" style="padding-top: -40px; background: whitesmoke">
+                {% if user.is_authenticated %}
+                    <h1 class="display-3">Hello, {{ user.get_full_name }}!</h1>
+                {% else %}
+                    <h1 class="display-3">Welcome to the Foodmates!</h1>
+
+                {% endif %}
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
+                    attention to featured content or information.</p>
+                <hr class="my-4">
+                <p>It uses utility classes for typography and spacing to space content out within the larger
+                    container.</p>
+                <p class="lead">
+                    {% if user.is_authenticated %}
+                        <a class="btn btn-primary" href="{% url 'common:places' %}"
+                           role="button">Explore Now!</a>
+                        <a class="btn btn-outline-warning" href="{% url 'common:suggest-place' %}"
+                           role="button">Try the Foodmates</a>
+
+                    {% else %}
+                        <a class="btn btn-primary btn-lg" href="{% url 'login' %}?next={{ request.path }}"
+                           role="button">Login</a>
+
+                    {% endif %}
+                </p>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card border-light mb-3" style="max-width: 90em">
+                            <div class="card-header">Dynamic Content</div>
+                            <div class="card-body">
+                                <h4 class="card-title">The database has the following record counts:</h4>
+                                <p class="card-text">
+                                    <strong>Places:</strong> {{ num_places }}
+                                    <strong>Users:</strong> {{ num_users }}</p>
+                            </div>
+                        </div>
+                        <p>You have visited this page
+                            {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

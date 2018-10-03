@@ -1,0 +1,37 @@
+{% extends "common/base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Restaurants - Foodmates</title>{% endblock %}
+
+
+{% block content %}
+    <div class="place_list" style="margin: auto;">
+        <div class="page-title text-center"><h1>Restaurants</h1></div>
+        {% if place_list %}
+            <div class="list-group shadow-sm">
+                {% for place in place_list %}
+                    <a href="{{ place.get_absolute_url }}" class="list-group-item list-group-item-action flex-column align-items-start place-item">
+
+                        <div class="row place-title-rank" style="margin: auto;">
+
+                            <div class="icon-box">
+                                <img class="shadow-sm" src="{% static 'images/place_icon.png' %}"/>
+                            </div>
+
+                            <div class="col-md-11">
+                                <div class="d-lg-flex shadow-lg justify-content-between">
+                                    <h3 class="mb-1">{{ place.title }}</h3>
+                                    <div class="place-rate"><small>{{ place.rate|floatformat }}</small></div>
+                                </div>
+                                <small>Donec id elit non mi porta.</small>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+                {% else %}
+                <p>There are no place in the database.</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+

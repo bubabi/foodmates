@@ -1,0 +1,61 @@
+{% extends "common/base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Suggest - Foodmates</title>{% endblock %}
+
+{% block content %}
+
+    <div class="page-title text-center"><h1>Suggest a place</h1></div>
+
+    <div class="container">
+        <div class="col">
+            <div class="ajax-loader">
+                <img src="{% static '/images/loader-2_food.gif' %}" class="img-responsive shadow-lg"/>
+            </div>
+            <div class="container" id="toggle-data">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div id="drop_zone" class="shadow-lg  border-warning"
+                             ondragenter="drag_enter(event)"
+                             ondrop="drag_drop(event)"
+                             ondragover="return false"
+                             ondragleave="drag_leave(event)">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div id="users" class="shadow-lg" style="margin: auto; width: 70%"
+                             ondragenter="drag_enter(event)"
+                             ondrop="drag_drop(event)"
+                             ondragover="return false"
+                             ondragleave="drag_leave(event)">
+                            {% for user in users %}
+                                <div data-id="{{ user.user.id }}" id="object{{ forloop.counter }}" class="objects  btn-xs "
+                                     draggable="true"
+                                     ondragstart="drag_start(event)"
+                                     ondragend="drag_end(event)">{{ user.user.first_name }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 text-center">
+                        <button id="suggest-button" type="button" class="btn btn-primary" style="margin: 10px"
+                                onclick="readDropZone()">Suggest!
+                        </button>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="col-md-12 text-center result" id="ajax-data"></div>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

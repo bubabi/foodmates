@@ -1,0 +1,87 @@
+{% if place == "NULL" %}
+    <!-- Modal -->
+    <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content shadow-lg">
+
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Error message</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p style="font-size:16px; font-family: 'Trebuchet MS'">{{ message }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+
+
+
+    <div class="container" id="select-div">
+        <div class="row justify-content-md-center">
+            <div class="col-md-6">
+                <div class="card border-light shadow-lg mb-3">
+                    <h3 class="card-header">{{ place.title }}</h3>
+                    <div class="card-body">
+                        <h5 class="card-title">Avg. Rate: {{ place.rate|floatformat }}</h5>
+                        <h6 class="card-subtitle text-muted">Kebab</h6>
+                    </div>
+                    <img style="height: 200px; width: 100%; display: block;"
+                         src="https://images.pexels.com/photos/6267/menu-restaurant-vintage-table.jpg?auto=compress&cs=tinysrgb&h=350"
+                         alt="Card image">
+                    <div class="card-body">
+                        <p class="card-text">{{ place.description }}</p>
+                        <a href="{{ place.get_absolute_url }}" class="card-link">Restaurant link</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button class="btn btn-outline-primary" onclick="myFunction()">Go Back</button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-6">
+
+
+                <div class="card shadow-lg mb-3">
+                    <div class="card-header"><h4>Statistical Data</h4>
+                        <h6 class="card-subtitle text-muted">Most popular condition</h6>
+                    </div>
+
+                    <div class="card-body">
+                        <canvas id="myChart" height="40vh" width="80vw"></canvas>
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+                        <p style="font-size: 12px;"><i>according to the data obtained from <b>{{ cond_count }}</b>
+                            conditions</i></p>
+                        <li class="list-group-item"><strong>Pay: </strong>{{ cond_info.pay }}</li>
+                        <li class="list-group-item"><strong>Time: </strong>{{ cond_info.time }}</li>
+                        <li class="list-group-item"><strong>Kitchen: </strong>{{ cond_info.kitchen }}</li>
+                        <li class="list-group-item"><strong>Hunger: </strong>{{ cond_info.hunger }}</li>
+
+                    </ul>
+                </div>
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-header"><h4>Accuracy Score</h4></div>
+                    <div class="card-body">
+
+                        <p class="card-title">The restaurant suggested by {{ score|floatformat }}% accuracy!</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <canvas id="myChart" height="20vh" width="40vw"></canvas>
+        </div>
+    </div>
+
+{% endif %}

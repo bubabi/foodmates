@@ -1,0 +1,75 @@
+{% extends "common/base_generic.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}<title>{{ place.title }} - Foodmates</title>{% endblock %}
+
+{% block content %}
+    <h1 class="page-title text-center">{{ place.title }} </h1>
+
+    <div class="container-fluid place-detail card">
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Average rate: {{ place.rate|floatformat }}</h5>
+                    <h6 class="card-subtitle text-muted"><i style="color: darkgrey">{{ place.place_votes.count }}
+                        votes</i>
+                    </h6>
+                    <br/>
+                    <p><b>Description: </b></p>{{ place.description }}
+
+                    <form action="{% url 'common:place-detail' place.pk %}" method="post">
+                        {% csrf_token %}
+
+                        {{ condition_form.as_p }}
+
+                        <div class="row" style="margin: 5px">{{ vote_form }} <input
+                                style="margin: 10px" class="btn btn-outline-warning  btn-sm" type="submit" value="Submit"></div>
+
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="place-photo-div col-md-4">
+                <img src="{% static 'images/place_photo.jpeg' %}" style="margin-top: 15px; width: 100%; height: 60%"
+                     alt="Card image">
+
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">User</th>
+                <th scope="col">Datetime</th>
+                <th scope="col">Rate</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for vote in place.place_votes.all %}
+                <tr>
+                    <th scope="row">{{ vote.profile.user.first_name }}</th>
+                    <td>{{ vote.vote_datetime }}</td>
+                    <td><span class="badge badge-primary badge-pill">{{ vote.rate }}</span></td>
+                </tr>
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+
+    </div>
+    {#  <div style="margin-left:20px;margin-top:20px">#}
+    {#    <h4>Copies</h4>#}
+    {##}
+    {#    {% for copy in book.bookinstance_set.all %}#}
+    {#    <hr>#}
+    {#    <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">{{ copy.get_status_display }}</p>#}
+    {#    {% if copy.status != 'a' %}<p><strong>Due to be returned:</strong> {{copy.due_back}}</p>{% endif %}#}
+    {#    <p><strong>Imprint:</strong> {{copy.imprint}}</p>#}
+    {#    <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>#}
+    {#    {% endfor %}#}
+    {#  </div> #}
+{% endblock %}

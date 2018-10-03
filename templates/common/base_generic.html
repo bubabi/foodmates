@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% block title %}<title>Foodmates</title>{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content=""/>
+
+    <link href="https://png.icons8.com/nolan/50/000000/hamburger.png" rel="icon" type="image/x-icon"/>
+
+    <!-- Animate.css -->
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Damion" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Flexslider  -->
+    <!-- Flaticons  -->
+    <!-- Owl Carousel -->
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+
+
+    <!-- Modernizr JS -->
+
+</head>
+<body>
+<div id="page" class="shadow-lg">
+        <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+            <a class="navbar-brand" href="{% url 'common:index' %}"><span style="font-family: 'Damion', cursive;"><img  src="{% static 'images/lfr.png' %}" /></span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+                    aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarColor02">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'common:index' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'common:places' %}">Restaurants</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'common:profile' %}">Profile</a>
+                        </li>
+                        <form style="margin-top: 8px; margin-left: 4px">
+                            <input value="Suggest a Place" type="button" class="btn btn-warning outline btn-sm"
+                                   onclick="window.location.href='{% url 'common:suggest-place' %}'"/>
+                        </form>
+
+                        <form style="margin-left: 10px; margin-top: 7px;">
+                            <input value="Logout" type="button" class="btn btn-outline-dark btn-sm"
+                                   onclick="window.location.href='{% url 'logout' %}'"/>
+                        </form>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link"
+                                                href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+
+
+                    {% endif %}
+                </ul>
+
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary btn-sm my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
+
+            </div>
+        </nav>
+    {% block content %} {% endblock %}
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+
+<!-- MAIN JS -->
+<script src="{% static 'js/main.js' %}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script type="text/javascript" src="{% static 'js/chart.js' %}"></script>
+<script src="{% static 'js/noframework.waypoints.min.js' %}"></script>
+
+
+</body>
+</html>

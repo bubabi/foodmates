@@ -1,0 +1,104 @@
+{% extends "common/base_generic.html" %}
+
+{% block title %}<title>Profile-Foodmates </title>{% endblock %}
+
+{% block content %}
+    <h1 class="page-title text-center">My Profile</h1>
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-12 col-md-8 col-lg-offset-3 col-lg-2" style="margin: -5px 20px 20px -25px;">
+                <div class="col-sm-12">
+                    <div class="col-xs-12 col-sm-8">
+                        <img class="media-object" src="https://zabas.com/wp-content/uploads/2014/06/placeholder-food-hover.png"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-offset-12 col-md-8 col-lg-offset-3 col-lg-9">
+                <div style="margin-left: 25px" class="col-sm-12">
+                    <div class="col-xs-12 col-sm-8">
+                        <h2>{{ current_user.user.first_name }} {{ current_user.user.last_name }}</h2>
+                        <p><strong>Gender: </strong> {{ current_user.gender }} </p>
+                        <p><strong>Location: </strong> {{ current_user.location }} </p>
+
+                        <p><strong>Age: </strong> {{ current_user.age }} </p>
+                        <p><strong>Hobbies: </strong> Read, out with friends, listen to music, draw and learn new
+                            things. </p>
+                        <p><strong>Favourite Kitchens: </strong>
+                            <span class="tags">kebab</span>
+                            <span class="tags">dessert</span>
+                            <span class="tags">flat-bread</span>
+                            <span class="tags">pizza</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+
+        <div class="container-fluid">
+
+            <div id="user-graph" class="row shadow-lg" style="background: #f2f2f2">
+                <div class="col text-center">
+
+                    <h3 style="margin: 15px">Your most preferred restaurants: </h3>
+
+                    <canvas id="place-data" height="30vh" width="80vw"></canvas>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 25px">
+                {% if rec_places_count == 0 %}
+                    <div class="col">
+                {% else %}
+                    <div class="col">
+
+                {% endif %}
+
+
+                <h3 class="text-center">Your votes: </h3>
+
+                <table class="table table-secondary">
+
+                    <tbody>
+                    {% for vote in cur_user_votes %}
+                        <tr>
+                            <th scope="row">{{ vote.place.title }}</th>
+                            <td>{{ vote.vote_datetime }}</td>
+                            <td><span class="badge badge-primary badge-pill">{{ vote.rate }}</span></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+
+
+
+                {% if rec_places_count != 0 %}
+                    <div class="col">
+                        <ul class="list-group">
+                            <h4 class="text-center">Here are some places you'll
+                                love!</h4>
+                            {% for place in recommended_places %}
+                                <a href={{ place.get_absolute_url }}>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{ place.title }}
+                                        <span class="badge badge-primary badge-pill">{{ place.rate|floatformat }}</span>
+                                    </li>
+                                </a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

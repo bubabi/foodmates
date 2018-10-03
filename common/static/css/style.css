@@ -1,0 +1,256 @@
+html, body, .cover {
+    font-family: 'Trebuchet MS';
+    font-weight: 400;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('../images/food_bg.jpg');
+    background-size: 50%;
+}
+
+
+#page {
+    margin: auto;
+    padding: 0;
+    width: 70%;
+    background-color: #fcfcfc;
+
+}
+
+.page-title {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.icon-box img {
+    width: 50px;
+    height: 50px;
+    border-radius: 250%;
+    margin-right: 5px;
+}
+
+.icon-box {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.shadow-lg {
+    border-radius: 10px;
+    padding: 3px;
+}
+
+#navbarColor02 {
+    margin: -7px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#navbarColor02.li:hover {
+    font-size: 40px;
+}
+
+img {
+  image-rendering: crisp-edges;
+}
+
+.cover {
+    width: 100%;
+    padding: 185px;
+    background: linear-gradient(rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.02)), url('../images/cover.png') center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.cover h1 {
+    color: black;
+    font-size: 50px;
+}
+
+.cover p {
+    color: white;
+    font-size: 15px;
+}
+
+.place-item:hover {
+    color: black;
+    border-color: whitesmoke;
+    background-color: #fafafa;
+}
+
+.place-item:hover h3 {
+    color: black;
+}
+
+.place-rate small {
+    padding: 10px;
+    font-size: 20px;
+    color: #ff5722;
+}
+
+.place-detail {
+    margin-top: -8px;
+
+}
+
+.jumbotron a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.objects {
+    display: inline-block;
+    padding: 8px;
+    margin: 3px;
+    border-radius: 8px;
+    background-color: #f5755a;
+    font-size: 18px;
+    color: #fff8e0;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px #f6785c;
+    transition: .5s;
+}
+
+.objects:hover {
+    color: #5b5b58;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    box-shadow: 3px 2px 3px 1px whitesmoke;
+
+}
+
+#drop_zone {
+    background-image: radial-gradient(circle, #fefefe, #f9f9f9);
+    border: #ffc7a3 4px dashed;
+    width: 80%;
+    height: 300px;
+    padding: 8px;
+    font-size: 18px;
+    margin: 5px auto;
+}
+
+#users {
+    padding: 10px;
+}
+
+.objects-list {
+}
+
+.predict-output {
+}
+
+.ajax-loader {
+    visibility: hidden;
+    background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    z-index: +100 !important;
+    width: 100%;
+}
+
+.ajax-loader img {
+    margin: 8% auto auto;
+    display: block;
+    border-radius: 40px;
+}
+
+.vote-form {
+    width: 50%;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+body {
+    font-family: 'Lato', 'sans-serif';
+}
+
+.profile {
+    min-height: 355px;
+    display: inline-block;
+}
+
+figcaption.ratings {
+    margin-top: 20px;
+}
+
+figcaption.ratings a {
+    color: #f1c40f;
+    font-size: 11px;
+}
+
+figcaption.ratings a:hover {
+    color: #f39c12;
+    text-decoration: none;
+}
+
+.divider {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.emphasis {
+    border-top: 4px solid transparent;
+}
+
+.emphasis:hover {
+    border-top: 4px solid #1abc9c;
+}
+
+.emphasis h2 {
+    margin-bottom: 0;
+}
+
+span.tags {
+    background: #1abc9c;
+    border-radius: 2px;
+    color: #f5f5f5;
+    font-weight: bold;
+    padding: 2px 4px;
+}
+
+.dropdown-menu {
+    background-color: #34495e;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    width: 250px;
+    margin-left: -125px;
+    left: 50%;
+}
+
+.dropdown-menu .divider {
+    background: none;
+}
+
+.dropdown-menu > li > a {
+    color: #f5f5f5;
+}
+
+.dropup .dropdown-menu {
+    margin-bottom: 10px;
+}
+
+.dropup .dropdown-menu:before {
+    content: "";
+    border-top: 10px solid #34495e;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -10px;
+    z-index: 10;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+header {
+  /* This section calls the slideInFromLeft animation we defined above */
+  animation: 0.5s ease-out 0s 1 slideInFromLeft;
+
+}
