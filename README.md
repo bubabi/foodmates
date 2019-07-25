@@ -4,6 +4,8 @@ Foodmates uses a **decision tree algorithm** to go from users' experiences about
 
 Also recommends new restaurants to logged user through process the vote datasets using **Nearest Neighbors Recommendation Engine**.
 
+**WARNING: _Internship Project_**
+
 ### TODO
 
 - [x] User-User Collaborative filtering Recommender System
