@@ -1,6 +1,6 @@
 # foodmates
 
-Foodmates uses a **decision tree algorithm** from user data about a lunch (pay, kitchen, hunger, time, rate)  to conclusions about target restaurant which will be suggest to the group of friends. 
+Foodmates uses a **decision tree algorithm** from user data about a lunch (pay, kitchen, hunger, time, rate)  to draw conclusions about target restaurant which will be suggest to the group of friends. 
 
 Also recommends new restaurants to logged user through process the vote datasets using **Nearest Neighbors Recommendation Engine**.
 
