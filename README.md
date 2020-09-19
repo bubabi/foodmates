@@ -12,4 +12,4 @@ Also recommends new restaurants to logged user through process the vote datasets
 - [x] Predicting a restaurant by Decision Tree Algorithm
 - [ ] Crawling restaurant titles from "foursquare.com" using Scrapy
 
-![gif](https://s2.gifyu.com/images/ezgif.com-optimizefae00eda34ca7b2d.gif)
+![demo](demo.gif)
